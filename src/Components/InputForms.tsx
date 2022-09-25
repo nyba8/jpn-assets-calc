@@ -2,11 +2,14 @@ import React from "react";
 
 export const InputTodo = (props: any) => {
   //ここでのpropsはapp.tsxで呼ばれるときにどんな変数宣言されてもいいですよってこと
-  const { todoText, onChange, onClick } = props; //このts内で使うためにpropsの中身を展開
+  const { initialAmount, onChange, onClick } = props; //このts内で使うためにpropsの中身を展開
+  
   return (
+    
     <div className="input-area">
-         <label style={{ color: props.color }}>{props.message}</label>
-      <input placeholder="todoを入力" value={todoText} onChange={onChange} />
+      <label >{props.message}</label>
+      <input placeholder="初期投資額..." value={initialAmount} onChange={onChange} />
+      <span>円</span>
     </div>
   );
 };

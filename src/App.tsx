@@ -5,18 +5,15 @@ import { SelectedForms } from "./Components/SelectedFroms";
 import { Assets } from "./Components/Assets";
 import { InputTodo } from "./Components/InputForms";
 
-
-
 export const App = () => {
   //const [options, setoptions] = useState("");
-  const [todoText, setTodoText] = useState("");
+  const [initialAmount, setInitialAmount] = useState("");
+
+
 
   const onChangeTodoText = (event: any) => {
-    setTodoText(event.target.value);
+    setInitialAmount(event.target.value);
   };
-
-
-
 
   interface ArrayValueLabel {
     value: number;
@@ -28,102 +25,79 @@ export const App = () => {
     { value: 1, label: "月-月" },
   ];
 
-  const StartYear: ArrayValueLabel[] = [
-    { value: 1985, label: "1985" },
-    { value: 1986, label: "1986" },
-    { value: 1987, label: "1987" },
-    { value: 1988, label: "1988" },
-    { value: 1985, label: "1985" },
-    { value: 1986, label: "1986" },
-    { value: 1987, label: "1987" },
-    { value: 1985, label: "1985" },
-    { value: 1986, label: "1986" },
-    { value: 1987, label: "1987" },
-    { value: 1985, label: "1985" },
-    { value: 1986, label: "1986" },
-    { value: 1987, label: "1987" },
-    { value: 1985, label: "1985" },
-    { value: 1986, label: "1986" },
-    { value: 1987, label: "1987" },
-    { value: 1985, label: "1985" },
-    { value: 1986, label: "1986" },
-    { value: 1987, label: "1987" },
-    { value: 1985, label: "1985" },
-    { value: 1986, label: "1986" },
-    { value: 1987, label: "1987" },
-  ];
 
-  const EndYear: ArrayValueLabel[] = [
-    { value: 1985, label: "1985" },
-    { value: 1986, label: "1986" },
-    { value: 1987, label: "1987" },
-    { value: 1988, label: "1988" },
-    { value: 1985, label: "1985" },
-    { value: 1986, label: "1986" },
-    { value: 1987, label: "1987" },
-    { value: 1985, label: "1985" },
-    { value: 1986, label: "1986" },
-    { value: 1987, label: "1987" },
-    { value: 1985, label: "1985" },
-    { value: 1986, label: "1986" },
-    { value: 1987, label: "1987" },
-    { value: 1985, label: "1985" },
-    { value: 1986, label: "1986" },
-    { value: 1987, label: "1987" },
-    { value: 1985, label: "1985" },
-    { value: 1986, label: "1986" },
-    { value: 1987, label: "1987" },
-    { value: 1985, label: "1985" },
-    { value: 1986, label: "1986" },
-    { value: 1987, label: "1987" },
-  ];
+  const start = 1985;
+  const end = 2022;
+  const StartToEndYearRange = (start: number, end: number) =>
+    [...Array(end - start + 1)].map((_, i) => start + i); //map(var,index,array) varは使わないから_で無視 いきなりindexは使えないから
+  const StartYearNumberArray = StartToEndYearRange(1985, 2022);
+  const StartYearStringArray = [...StartYearNumberArray].map((value) => {
+    return value.toString();
+  });
+
+  const StartYear = [...Array(end - start + 1)].map((what, i) => {
+    return { value: StartYearNumberArray[i], label: StartYearStringArray[i] };
+  });
+
+  const EndYear = [...Array(end - start + 1)].map((what, i) => {
+    return { value: StartYearNumberArray[i], label: StartYearStringArray[i] };
+  });
 
   const YTD: ArrayValueLabel[] = [
-    { value: 0, label: "年-年" },
-    { value: 1, label: "月-月" },
-  ];
-
-  const InitialAmount: ArrayValueLabel[] = [
-    { value: 0, label: "年-年" },
-    { value: 1, label: "月-月" },
+    { value: 0, label: "はい" },
+    { value: 1, label: "いいえ" },
   ];
 
   const Cashflows: ArrayValueLabel[] = [
-    { value: 0, label: "年-年" },
-    { value: 1, label: "月-月" },
+    { value: 0, label: "無し" },
+    { value: 1, label: "一定量入金" },    
+    { value: 2, label: "一定量出金" },
+    { value: 3, label: "一定割合出金" },
   ];
+
   const Rebalancing: ArrayValueLabel[] = [
-    { value: 0, label: "年-年" },
-    { value: 1, label: "月-月" },
+    { value: 0, label: "リバランス無し" },
+    { value: 1, label: "年に1回リバランス" },
+    { value: 2, label: "半年に1回リバランス" },
+    { value: 3, label: "4半期に1回リバランス" },
+    { value: 4, label: "毎月リバランス" },
+    { value: 5, label: "割合リバランス//実装しない" }
   ];
   const LeverageType: ArrayValueLabel[] = [
-    { value: 0, label: "年-年" },
-    { value: 1, label: "月-月" },
+    { value: 0, label: "レバレッジ無し" },
+    { value: 1, label: "固定量レバレッジ" },
+    { value: 2, label: "固定割合レバレッジ" }
   ];
   const ReinvestDividends: ArrayValueLabel[] = [
-    { value: 0, label: "年-年" },
-    { value: 1, label: "月-月" },
+    { value: 0, label: "再投資する" },
+    { value: 1, label: "再投資しない" },
   ];
   const DisplayIncome: ArrayValueLabel[] = [
-    { value: 0, label: "年-年" },
-    { value: 1, label: "月-月" },
+    { value: 0, label: "表示しない" },
+    { value: 1, label: "表示する" },
   ];
   const FactorRegression: ArrayValueLabel[] = [
-    { value: 0, label: "年-年" },
-    { value: 1, label: "月-月" },
+    { value: 0, label: "しない" },
+    { value: 1, label: "する//実装しない" },
   ];
   const Benchmark: ArrayValueLabel[] = [
-    { value: 0, label: "年-年" },
-    { value: 1, label: "月-月" },
+    { value: 0, label: "無し" },
+    { value: 1, label: "特定の銘柄" },
+    { value: 2, label: "インポート" },
+    { value: 3, label: "VOO" },
+    { value: 4, label: "Vanguardバランスファンド" }
   ];
   const PortfolioNames: ArrayValueLabel[] = [
-    { value: 0, label: "年-年" },
-    { value: 1, label: "月-月" },
+    { value: 0, label: "名前を付けない" },
+    { value: 1, label: "名前を付ける//3つ表示" },
   ];
   const PortfolioAssets: ArrayValueLabel[] = [
-    { value: 0, label: "年-年" },
-    { value: 1, label: "月-月" },
+    { value: 0, label: "↓の3726とかから計算" }
   ];
+
+  //experiment-------------------------------------------
+
+  //experiment-------------------------------------------
 
   return (
     <>
@@ -140,17 +114,16 @@ export const App = () => {
       <SelectedForms message="年間/月間" options={TimePeriod} />
       <SelectedForms message="開始年" options={StartYear} />
       <SelectedForms message="終了年" options={EndYear} />
-      <SelectedForms message="YTD" options={YTD} />{" "}
-      <SelectedForms message="初期投資額" options={InitialAmount} />{" "}
+      <SelectedForms message="年初来リターン" options={YTD} />
       <InputTodo
-      message="初期投資額"
-        todoText={todoText}
+        message="初期投資額"
+        todoText={initialAmount}
         onChange={onChangeTodoText}
       />
 
-      <SelectedForms message="キャッシュフロー" options={Cashflows} />{" "}
-      <SelectedForms message="リバランス頻度" options={Rebalancing} />{" "}
-      <SelectedForms message="レバレッジタイプ" options={LeverageType} />{" "}
+      <SelectedForms message="キャッシュフロー" options={Cashflows} />
+      <SelectedForms message="リバランス頻度" options={Rebalancing} />
+      <SelectedForms message="レバレッジタイプ" options={LeverageType} />
       <SelectedForms message="配当再投資" options={ReinvestDividends} />
       <SelectedForms message="配当金の表示" options={DisplayIncome} />
       <SelectedForms message="回帰分析" options={FactorRegression} />

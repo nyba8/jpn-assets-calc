@@ -2,21 +2,11 @@ import React, { useState } from "react";
 import Select from "react-select";
 
 export const SelectedForms = (props: any) => {
-  const { options } = props;
+  const { message,value,label } = props;
 
-  /*
-  const [initOpt, setInitOpt] = useState([
-    { value: "year", label: "年-年" },
-    { value: "month", label: "月-月" }
-  ]);
-*/
-  //このオプションをうまいこと核コンポーネントごとに使いまわせるようにする
-  /*
-  const options = [
-    { value: "year", label: "年-年" },
-    { value: "month", label: "月-月" }
-  ];*/
-
+  //console.log(props.value);
+  //selectの変化を検知してうまいことvalueを伝えるようにする
+  //そのvalueで条件レンダリング if 3&&<専用コンポーネント/> など
   return (
     <div  className="SelectConditions">
       <label style={{ color: props.color }}>{props.message}</label>
@@ -24,8 +14,4 @@ export const SelectedForms = (props: any) => {
     </div>
   );
 
-  //中身に渡すoptionsをコンポーネント側で呼ぶ
-
-  //      <SelectedForms option=/>
-  //<SelectedForms />
 };
