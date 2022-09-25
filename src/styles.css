@@ -1,0 +1,51 @@
+body {
+    font-family: sans-serif;
+  }
+  
+  input {
+    border-radius: 16px;
+    border: none;
+    padding: 6px 16px;
+    outline: none;
+  }
+  
+  button {
+    border-radius: 16px;
+    border: none;
+    padding: 4px 16px;
+  }
+  
+  button:hover {
+    background-color: #ff7fff;
+    color: #fff;
+    cursor: pointer;
+  }
+  
+  li {
+    margin-right: 8px;
+  }
+  
+  label {
+    float: left;
+    display: inline-block;
+  }
+  
+  .header {
+    background-color: #a9a9a9;
+    width: 400px;
+    height: 30px;
+    border-radius: 8px;
+    padding: 8px;
+    margin: 8px;
+  }
+  
+  .SelectConditions {
+    background-color: #c6ffe2;
+    width: 400px;
+    min-height: 200px;
+    padding: 8px;
+    margin: 8px;
+    border-radius: 8px;
+    float: right;
+  }
+  
