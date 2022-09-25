@@ -1,12 +1,22 @@
-import React from "react";
-//import React, { useState } from "react";
+import React, { useState } from "react";
 import "./styles.css";
 
 import { SelectedForms } from "./Components/SelectedFroms";
 import { Assets } from "./Components/Assets";
+import { InputTodo } from "./Components/InputForms";
+
+
 
 export const App = () => {
   //const [options, setoptions] = useState("");
+  const [todoText, setTodoText] = useState("");
+
+  const onChangeTodoText = (event: any) => {
+    setTodoText(event.target.value);
+  };
+
+
+
 
   interface ArrayValueLabel {
     value: number;
@@ -68,6 +78,11 @@ export const App = () => {
     { value: 1987, label: "1987" },
   ];
 
+  const YTD: ArrayValueLabel[] = [
+    { value: 0, label: "年-年" },
+    { value: 1, label: "月-月" },
+  ];
+
   const InitialAmount: ArrayValueLabel[] = [
     { value: 0, label: "年-年" },
     { value: 1, label: "月-月" },
@@ -125,7 +140,14 @@ export const App = () => {
       <SelectedForms message="年間/月間" options={TimePeriod} />
       <SelectedForms message="開始年" options={StartYear} />
       <SelectedForms message="終了年" options={EndYear} />
+      <SelectedForms message="YTD" options={YTD} />{" "}
       <SelectedForms message="初期投資額" options={InitialAmount} />{" "}
+      <InputTodo
+      message="初期投資額"
+        todoText={todoText}
+        onChange={onChangeTodoText}
+      />
+
       <SelectedForms message="キャッシュフロー" options={Cashflows} />{" "}
       <SelectedForms message="リバランス頻度" options={Rebalancing} />{" "}
       <SelectedForms message="レバレッジタイプ" options={LeverageType} />{" "}

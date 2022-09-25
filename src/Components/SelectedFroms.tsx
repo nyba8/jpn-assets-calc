@@ -18,7 +18,7 @@ export const SelectedForms = (props: any) => {
   ];*/
 
   return (
-    <div id="SelectConditions">
+    <div  className="SelectConditions">
       <label style={{ color: props.color }}>{props.message}</label>
       <Select placeholder="ここを動的に変える" options={props.options} />
     </div>

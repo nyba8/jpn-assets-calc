@@ -41,11 +41,28 @@ body {
   
   .SelectConditions {
     background-color: #c6ffe2;
-    width: 400px;
-    min-height: 200px;
+    width: 600px;
+    min-height: 50px;
     padding: 8px;
     margin: 8px;
     border-radius: 8px;
-    float: right;
+    
+  }
+
+  .input-area {
+    background-color: #c6ffe2;
+    width: 400px;
+    height: 30px;
+    border-radius: 8px;
+    padding: 8px;
+    margin: 8px;
   }
   
+  .assets-area {
+    background-color: #ffffe0;
+    width: 800px;
+    min-height: 20px;
+    padding: 8px;
+    margin: 8px;
+    border-radius: 8px;
+  }
